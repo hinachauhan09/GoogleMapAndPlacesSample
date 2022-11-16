@@ -11,7 +11,7 @@ import GooglePlaces
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey(Keys.GoogleMapKey)
+        GMSServices.provideAPIKey(Keys.GoogleMapsKey)
         GMSPlacesClient.provideAPIKey(Keys.GooglePlacesKey)
         return true
     }

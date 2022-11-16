@@ -13,8 +13,8 @@ struct GoogleMapsView: UIViewRepresentable {
     
     // Listen to changes on the locationManager
     @ObservedObject var locationManager = LocationManager()
-    var mapView = GMSMapView()
-    let marker = GMSMarker()
+  
+    
 //    var camera = GMSCameraUpdate()
     @Binding var zoom: Float
     @Binding var location : (latitude : Double, longitude : Double)
@@ -22,10 +22,11 @@ struct GoogleMapsView: UIViewRepresentable {
     
     func makeUIView(context: Self.Context) -> GMSMapView {
         
-        var camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), zoom: zoom)
+        let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), zoom: 15.0)
         
-        mapView.frame = CGRect.zero
-        mapView.camera = camera
+        var mapView = GMSMapView(frame: CGRect.zero, camera: camera)
+//        mapView.frame = CGRect.zero
+//        mapView.camera = camera
         mapView.settings.compassButton = true
         mapView.isMyLocationEnabled = true
         mapView.settings.scrollGestures = true
@@ -34,11 +35,9 @@ struct GoogleMapsView: UIViewRepresentable {
         mapView.settings.tiltGestures = true
         mapView.delegate = context.coordinator
         
-        
+        let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         marker.map = mapView
-        
-        
         
         return mapView
     }
@@ -46,17 +45,19 @@ struct GoogleMapsView: UIViewRepresentable {
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
 //        mapView.animate(toLocation:  mapView.selectedMarker?.position ?? CLLocationCoordinate2D(latitude: latitute, longitude: longitute))
         
-//        mapView.clear()
+        mapView.clear()
         
         let tappedLocation = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         
         let tappedLocationCam = GMSCameraUpdate.setTarget(tappedLocation)
         mapView.animate(with: tappedLocationCam)
-        mapView.animate(toZoom: zoom)
-        marker.position = tappedLocation
-        print("Marker \(marker.position)")
         
+        mapView.animate(toZoom: zoom)
+     
+        let marker = GMSMarker()
+        marker.position = tappedLocation
         marker.map = mapView
+        
         if(showCurrentLocation){
             mapView.settings.myLocationButton.toggle()
             mapView.settings.myLocationButton = false

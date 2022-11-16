@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var zoom : Float = 15.0
  //   @StateObject private var viewModel = MainViewModel()
-    @State var location : (latitude : Double, longitude : Double) = (0,0) 
+    @State var location : (latitude : Double, longitude : Double) = (18.52,73.853) 
     @State var currentLocation : Bool = false
     
     var body: some View {
@@ -30,7 +30,7 @@ struct ContentView: View {
                                 .padding(10)
                                 .background(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .padding(10)
+                               
                             }
                             
                             Spacer()
@@ -74,6 +74,7 @@ struct ContentView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             //Spacer(minLength: 50)
                         }
+                        .padding(15)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height*0.8)
                     
