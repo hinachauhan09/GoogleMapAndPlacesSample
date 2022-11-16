@@ -40,17 +40,17 @@ class PlaceAutocompleteViewController: UIViewController{
     
     func goBack(){
         print("go-back")
-//        _ = navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        //        _ = navigationController?.popViewController(animated: true)
+        //        self.dismiss(animated: true, completion: nil)
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
         self.navigationItem.backBarButtonItem?.isEnabled = true
-//        }
+        //        }
     }
 }
 
 struct PlaceAutoCompleteView : UIViewControllerRepresentable{
     @Binding var dissmiss : Bool
-    @Binding var location : (latitude : Double, longitude : Double)
+    @Binding var location : Location
     
     let autocompleteController = PlaceAutocompleteViewController()
     func makeUIViewController(context: Self.Context) -> PlaceAutocompleteViewController {
@@ -92,9 +92,9 @@ struct PlaceAutoCompleteView : UIViewControllerRepresentable{
             parent.location.latitude = place.coordinate.latitude
             parent.location.longitude = place.coordinate.longitude
             parent.goBack()
-//            parent.presentationMode.wrappedValue.dismiss()
+            //            parent.presentationMode.wrappedValue.dismiss()
             parent.dissmiss.toggle()
-           
+            
             print("dismiss", parent.dissmiss)
         }
         

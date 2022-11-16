@@ -9,20 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @State var zoom : Float = 15.0
- //   @StateObject private var viewModel = MainViewModel()
-    @State var location : (latitude : Double, longitude : Double) = (18.52,73.853) 
+    @ObservedObject private var viewModel = MainViewModel()
+    //    @State var location : Location =  Location(latitude: 18.52, longitude: 73.853)
     @State var currentLocation : Bool = false
-    
+    @State var address : (text : String,location : String) = ("","")
     var body: some View {
         NavigationView{
             GeometryReader{ geometry in
                 VStack {
                     ZStack(alignment: .topTrailing){
-                        GoogleMapsView(zoom : $zoom,location: $location, showCurrentLocation: $currentLocation)
+                        GoogleMapsView(zoom : $zoom,location: $viewModel.location, showCurrentLocation: $currentLocation, placeAddress: $viewModel.placeAddress)
                             .frame(width: geometry.size.width, height: geometry.size.height*0.8)
-                            
+                            .onAppear{
+                                viewModel.fetchAddress()
+                            }
+                        
+                        
+                        
                         VStack(alignment: .trailing){
-                            NavigationLink(destination: PlaceView(location: $location)) {
+                            NavigationLink(destination: PlaceView(location: $viewModel.location)) {
                                 HStack{
                                     Image("search")
                                     Text("Search Places")
@@ -30,14 +35,14 @@ struct ContentView: View {
                                 .padding(10)
                                 .background(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                               
+                                
                             }
                             
                             Spacer()
                             Button{
                                 currentLocation.toggle()
                                 currentLocation = true
-                                print("GPS")
+                                //                                print("GPS")
                             }label: {
                                 
                                 Image("gps")
@@ -53,12 +58,12 @@ struct ContentView: View {
                                         zoom = 13
                                     }
                                     zoom = zoom + 1
-                                    print("add ",zoom)
+                                    //                                    print("add ",zoom)
                                 }label: {
                                     Image("add")
                                 } .padding(10)
                                 Button{
-                                    print("minus",zoom)
+                                    //                                    print("minus",zoom)
                                     if(zoom>22){
                                         zoom = 21
                                     }
@@ -78,8 +83,10 @@ struct ContentView: View {
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height*0.8)
                     
-                    let address = (UserDefaults().string(forKey: Constants.Place.PLACE_NAME) ?? "Please Select Address") + "\n" + (UserDefaults().string(forKey: Constants.Place.PLACE_FORMATTED_ADDR) ?? "")
-                    Text(address)
+                    Text("Address")
+                        .bold()
+                        .padding()
+                    Text(viewModel.placeAddress)
                         .padding()
                         .foregroundColor(.black)
                         .frame(width: geometry.size.width, height: geometry.size.height*0.2, alignment: .topLeading)
@@ -88,7 +95,7 @@ struct ContentView: View {
                 .frame(width: geometry.size.width,height: geometry.size.height)
                 //            .background(.red)
             }
-           
+            
         }
         .navigationViewStyle(.stack)
     }

@@ -11,7 +11,7 @@ struct PlaceView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var dismissView : Bool  = false
-    @Binding var location : (latitude : Double, longitude : Double)
+    @Binding var location : Location
     
     var body: some View {
         NavigationView{
@@ -28,7 +28,7 @@ struct PlaceView: View {
                     }
                 }
         }
-           
+        
     }
 }
 

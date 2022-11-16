@@ -10,7 +10,7 @@
 		C8EA4C59562C53B3562BB42F /* libPods-GoogleMapAndPlacesSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7196F4122064C5813AA23418 /* libPods-GoogleMapAndPlacesSample.a */; };
 		FD62942A291E134D00C90BE2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD629429291E134D00C90BE2 /* Utils.swift */; };
 		FD62942C291E463B00C90BE2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD62942B291E463B00C90BE2 /* MainViewModel.swift */; };
-		FDEACD682924B28400F7B989 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEACD672924B28400F7B989 /* Keys.swift */; };
+		FDEACD6E2924E1C400F7B989 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEACD6D2924E1C300F7B989 /* Keys.swift */; };
 		FDECB2A9291CDC4D00F4AF93 /* GoogleMapAndPlacesSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDECB2A8291CDC4D00F4AF93 /* GoogleMapAndPlacesSampleApp.swift */; };
 		FDECB2AB291CDC4D00F4AF93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDECB2AA291CDC4D00F4AF93 /* ContentView.swift */; };
 		FDECB2AD291CDC5000F4AF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDECB2AC291CDC5000F4AF93 /* Assets.xcassets */; };
@@ -27,7 +27,7 @@
 		87F07ABBB4FDC123185D1126 /* Pods-GoogleMapAndPlacesSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapAndPlacesSample.release.xcconfig"; path = "Target Support Files/Pods-GoogleMapAndPlacesSample/Pods-GoogleMapAndPlacesSample.release.xcconfig"; sourceTree = "<group>"; };
 		FD629429291E134D00C90BE2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FD62942B291E463B00C90BE2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		FDEACD672924B28400F7B989 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		FDEACD6D2924E1C300F7B989 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = GoogleMapAndPlacesSample/Keys.swift; sourceTree = SOURCE_ROOT; };
 		FDECB2A5291CDC4D00F4AF93 /* GoogleMapAndPlacesSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapAndPlacesSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDECB2A8291CDC4D00F4AF93 /* GoogleMapAndPlacesSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapAndPlacesSampleApp.swift; sourceTree = "<group>"; };
 		FDECB2AA291CDC4D00F4AF93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +91,7 @@
 			children = (
 				FDECB2A8291CDC4D00F4AF93 /* GoogleMapAndPlacesSampleApp.swift */,
 				FDECB2AA291CDC4D00F4AF93 /* ContentView.swift */,
+				FDEACD6D2924E1C300F7B989 /* Keys.swift */,
 				FDECB2AC291CDC5000F4AF93 /* Assets.xcassets */,
 				FDECB2AE291CDC5000F4AF93 /* Preview Content */,
 				FDECB2B8291CF7CF00F4AF93 /* GoogleMapsView.swift */,
@@ -99,7 +100,6 @@
 				FDECB2BE291D27F900F4AF93 /* PlaceView.swift */,
 				FD629429291E134D00C90BE2 /* Utils.swift */,
 				FD62942B291E463B00C90BE2 /* MainViewModel.swift */,
-				FDEACD672924B28400F7B989 /* Keys.swift */,
 			);
 			path = GoogleMapAndPlacesSample;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 				FDECB2AB291CDC4D00F4AF93 /* ContentView.swift in Sources */,
 				FD62942C291E463B00C90BE2 /* MainViewModel.swift in Sources */,
 				FDECB2A9291CDC4D00F4AF93 /* GoogleMapAndPlacesSampleApp.swift in Sources */,
-				FDEACD682924B28400F7B989 /* Keys.swift in Sources */,
+				FDEACD6E2924E1C400F7B989 /* Keys.swift in Sources */,
 				FDECB2BD291D0B5A00F4AF93 /* PlaceAutocompleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

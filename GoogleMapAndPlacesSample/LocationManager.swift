@@ -15,9 +15,9 @@ class LocationManager: NSObject, ObservableObject {
     @Published var lastKnownLocation: CLLocation? = nil
     
     // 1
-     @Published var location: CLLocation? {
-       willSet { objectWillChange.send() }
-     }
+    @Published var location: CLLocation? {
+        willSet { objectWillChange.send() }
+    }
     
     // 2
     var latitude: CLLocationDegrees {
@@ -30,14 +30,14 @@ class LocationManager: NSObject, ObservableObject {
     
     // 3
     override init() {
-      super.init()
-
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//      locationManager.requestWhenInUseAuthorization()
-      locationManager.startUpdatingLocation()
-            locationManager.requestAlwaysAuthorization()
-            locationManager.distanceFilter = 50
+        super.init()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //      locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
     }
 }
 
@@ -45,20 +45,20 @@ extension LocationManager: CLLocationManagerDelegate {
     // 4
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
-          return
+            return
         }
-   
-    // 4
-    locationManager.startUpdatingLocation()
-      
-  }
-  
-  // 6
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      // Notify listeners that the user has a new location
-      self.lastKnownLocation = locations.last
-      
-    // 8
-//    locationManager.stopUpdatingLocation()
-  }
+        
+        // 4
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    // 6
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // Notify listeners that the user has a new location
+        self.lastKnownLocation = locations.last
+        
+        // 8
+        //    locationManager.stopUpdatingLocation()
+    }
 }
